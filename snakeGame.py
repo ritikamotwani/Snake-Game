@@ -66,7 +66,7 @@ while True:
 				changeto = 'UP'
 			if event.key == pygame.K_DOWN:
 				changeto = 'DOWN'
-			if event.key == pygaame.K_ESCAPE:
+			if event.key == pygame.K_ESCAPE:
 				pygame.event.post(pygame.event.Event(QUIT))
 			
 	# validation of direction
@@ -99,4 +99,10 @@ while True:
 		foodPos = [random.randrange(1,72)*10,random.randrange(1,46)*10]
  	foodSpawn = True
 
-
+	# Background
+	playSurface.fill(white)
+	
+	for pos in snakeBody:
+		pygame.draw.rect(playSurface, green, pygame.Rect(pos[0],pos[1],10,10))
+	pygame.display.flip()
+	fpsController.tick(25)	
