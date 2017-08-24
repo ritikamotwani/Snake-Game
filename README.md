@@ -1,5 +1,5 @@
 # Snake-Game
   To Run :
     pip install pygame
-    <br\>
+    <br/>
     python snakeGame.py
