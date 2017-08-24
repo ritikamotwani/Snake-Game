@@ -95,6 +95,8 @@ while True:
 		foodSpawn = False
 	else:
 		snakeBody.pop()
+	
+
 	if foodSpawn == False:
 		foodPos = [random.randrange(1,72)*10,random.randrange(1,46)*10]
  	foodSpawn = True
@@ -104,5 +106,17 @@ while True:
 	
 	for pos in snakeBody:
 		pygame.draw.rect(playSurface, green, pygame.Rect(pos[0],pos[1],10,10))
+	pygame.draw.rect(playSurface, brown, pygame.Rect(foodPos[0],foodPos[1],10,10))
 	pygame.display.flip()
 	fpsController.tick(25)	
+	
+	# Bound
+	if snakePos[0] > 710 or snakePos[0] < 0:
+		gameOver()
+	if snakePos[1] > 450 or snakePos[1] < 0:
+		gameOver()
+	
+	# Self Hit
+	for block in snakeBody[1:]:
+		if snakePos[0] == block[0] and snakePos[1] == block[1]:
+			gameOver()	
